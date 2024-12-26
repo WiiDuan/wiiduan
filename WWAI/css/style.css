@@ -1,0 +1,468 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #fff;
+    color: #333;
+}
+
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 容器样式 */
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+/* 欢迎页样式 */
+.cover-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #FFF9F5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+    font-family: Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+.cover-page.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cover-content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    padding: 0 20px;
+}
+
+.cover-title {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #333;
+    margin: 0;
+}
+
+/* 水波纹动画 */
+.ripple {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.ripple-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: #96BFDD;
+    opacity: 0.1;
+    transform: scale(0);
+    animation: ripple-animation 6s infinite;
+}
+
+.ripple-circle:nth-child(1) {
+    width: 400px;
+    height: 400px;
+    left: 10%;
+    top: 30%;
+    animation-delay: 0s;
+}
+
+.ripple-circle:nth-child(2) {
+    width: 300px;
+    height: 300px;
+    left: 60%;
+    top: 50%;
+    animation-delay: 2s;
+}
+
+.ripple-circle:nth-child(3) {
+    width: 200px;
+    height: 200px;
+    left: 30%;
+    top: 70%;
+    animation-delay: 4s;
+}
+
+@keyframes ripple-animation {
+    0% {
+        transform: scale(0);
+        opacity: 0.1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* 通用按钮样式 */
+.btn-start,
+.btn-back,
+.btn-next,
+.btn-retry,
+.btn-order {
+    border: none;
+    border-radius: 25px;
+    padding: 12px 40px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: Helvetica, sans-serif;
+}
+
+/* 开始按钮 */
+.btn-start {
+    background-color: #96BFDD;
+    color: #fff;
+}
+
+.btn-start:hover {
+    background-color: #7BA7C5;
+    transform: translateY(-2px);
+}
+
+/* 返回按钮 */
+.btn-back {
+    background-color: #F0F0F0;
+    color: #666;
+}
+
+.btn-back:hover {
+    background-color: #E0E0E0;
+}
+
+/* 下一步按钮 */
+.btn-next {
+    background-color: #96BFDD;
+    color: #fff;
+}
+
+.btn-next:hover {
+    background-color: #7BA7C5;
+}
+
+/* 重试和下单按钮 */
+.btn-retry,
+.btn-order {
+    background-color: #96BFDD;
+    color: #fff;
+}
+
+.btn-retry:hover,
+.btn-order:hover {
+    background-color: #7BA7C5;
+}
+
+/* 按钮容器样式 */
+.button-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to top, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 0));
+    z-index: 10;
+}
+
+/* 结果页按钮容器 */
+.result-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* 标题栏样式 */
+.title-bar {
+    background-color: #96BFDD;
+    padding: 15px 20px;
+    color: #fff;
+    font-family: Helvetica, sans-serif;
+    font-size: 11px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    text-align: center;
+}
+
+.title-text {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: Helvetica, sans-serif;
+}
+
+/* 问题页样式 */
+.question-container {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 60px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.question-container.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.question-container.exit {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.question-title {
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.option {
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option:hover {
+    background-color: #f5f5f5;
+}
+
+.option.selected {
+    background-color: #f5f5f5;
+    border-color: #333;
+}
+
+.option-desc {
+    color: #666666;
+    font-size: 0.9em;
+}
+
+/* 进度条样式 */
+.progress-container {
+    width: 100%;
+    height: 4px;
+    background-color: #f5f5f5;
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #333;
+    transition: width 0.3s ease;
+}
+
+/* 结果页样式 */
+.result-container {
+    padding: 20px;
+    margin-top: 60px;
+    margin-bottom: 80px;
+}
+
+.result-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.result-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+}
+
+.result-image {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.result-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.result-details {
+    padding: 0 20px 20px;
+}
+
+.result-title {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.coffee-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.coffee-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.detail-label {
+    color: #666;
+    font-size: 14px;
+}
+
+.detail-value {
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.flavor-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.flavor-tag {
+    background-color: #F0F7FC;
+    color: #96BFDD;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.flavor-description {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* 加载动画样式 */
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 响应式样式 */
+@media screen and (max-width: 768px) {
+    .cover-content {
+        top: 40%;
+        gap: 40px;
+    }
+    
+    .cover-title {
+        font-size: 24px;
+    }
+    
+    .result-content {
+        flex-direction: column;
+    }
+
+    .result-image {
+        flex: none;
+        margin-bottom: 20px;
+    }
+
+    .result-image img {
+        height: 200px;
+    }
+}

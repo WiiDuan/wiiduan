@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: https:; font-src 'self' data:;">
+    <title>Whenwhere 闻未咖啡</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- 欢迎页 -->
+        <div class="cover-page active">
+            <div class="ripple">
+                <div class="ripple-circle"></div>
+                <div class="ripple-circle"></div>
+                <div class="ripple-circle"></div>
+            </div>
+            <div class="cover-content">
+                <h1 class="cover-title">三步选择<br>适合自己的咖啡</h1>
+                <button class="btn-start">开始</button>
+            </div>
+        </div>
+
+        <div class="title-bar" style="display: none;">
+            <h2>Whenwhere AI agent</h2>
+        </div>
+
+        <div class="question-container">
+            <!-- 问题内容将动态插入 -->
+        </div>
+
+        <div class="button-container">
+            <button class="btn-back" style="display: none;">返回</button>
+            <button class="btn-next" style="display: none;">下一步</button>
+        </div>
+
+        <div class="result-container" style="display: none;">
+            <!-- 推荐结果将动态插入 -->
+        </div>
+
+        <div class="result-buttons" style="display: none;">
+            <button class="btn-retry">重新选择</button>
+            <button class="btn-order">去下单</button>
+        </div>
+
+        <!-- 加载动画 -->
+        <div class="loading-container" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>正在为您推荐...</p>
+        </div>
+
+        <div class="overlay" style="display: none;"></div>
+
+        <div id="error-toast" style="display: none;">
+            <div class="error-message"></div>
+        </div>
+
+        <script src="./js/questions.js"></script>
+        <script src="./js/recommendations.js"></script>
+        <script src="./js/error-handler.js"></script>
+        <script src="./js/main.js"></script>
+        <script src="./js/init.js"></script>
+    </div>
+</body>
+</html>
